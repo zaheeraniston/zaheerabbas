@@ -280,12 +280,13 @@ export default function App() {
 
   const defaultRow1 = [mq1_1, mq1_2, mq1_3, mq1_4, mq1_5, mq1_6]
   const defaultRow2 = [mq2_1, mq2_2, mq2_3, mq2_4]
-  const marqueeRow1 = portfolioData.marquee?.row1?.length
-    ? [...portfolioData.marquee.row1, ...portfolioData.marquee.row1, ...portfolioData.marquee.row1, ...portfolioData.marquee.row1]
-    : [...defaultRow1, ...defaultRow1, ...defaultRow1, ...defaultRow1]
-  const marqueeRow2 = portfolioData.marquee?.row2?.length
-    ? [...portfolioData.marquee.row2, ...portfolioData.marquee.row2, ...portfolioData.marquee.row2, ...portfolioData.marquee.row2]
-    : [...defaultRow2, ...defaultRow2, ...defaultRow2, ...defaultRow2]
+  const validRow1 = (portfolioData.marquee?.row1 || []).map((img, idx) => img || defaultRow1[idx % defaultRow1.length])
+  const activeRow1 = validRow1.length ? validRow1 : defaultRow1
+  const marqueeRow1 = [...activeRow1, ...activeRow1, ...activeRow1, ...activeRow1]
+
+  const validRow2 = (portfolioData.marquee?.row2 || []).map((img, idx) => img || defaultRow2[idx % defaultRow2.length])
+  const activeRow2 = validRow2.length ? validRow2 : defaultRow2
+  const marqueeRow2 = [...activeRow2, ...activeRow2, ...activeRow2, ...activeRow2]
 
   return (
     <div className="app-root" style={{ background: '#0a0a0f', position: 'relative' }}>
@@ -366,14 +367,36 @@ export default function App() {
         <div className="marquee-container">
           <div className="marquee-track-l">
             {marqueeRow1.map((imgSrc, idx) => (
-              <img key={`mq1-${idx}`} src={imgSrc} alt="Showcase Preview" className="mq-img" />
+              <img
+                key={`mq1-${idx}`}
+                src={imgSrc}
+                alt="Showcase Preview"
+                className="mq-img"
+                onError={(e) => {
+                  const fallback = defaultRow1[idx % defaultRow1.length]
+                  if (e.currentTarget.src !== fallback) {
+                    e.currentTarget.src = fallback
+                  }
+                }}
+              />
             ))}
           </div>
         </div>
         <div className="marquee-container">
           <div className="marquee-track-r">
             {marqueeRow2.map((imgSrc, idx) => (
-              <img key={`mq2-${idx}`} src={imgSrc} alt="Showcase Preview" className="mq-img" />
+              <img
+                key={`mq2-${idx}`}
+                src={imgSrc}
+                alt="Showcase Preview"
+                className="mq-img"
+                onError={(e) => {
+                  const fallback = defaultRow2[idx % defaultRow2.length]
+                  if (e.currentTarget.src !== fallback) {
+                    e.currentTarget.src = fallback
+                  }
+                }}
+              />
             ))}
           </div>
         </div>

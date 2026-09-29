@@ -364,10 +364,24 @@ export const getDefaultPortfolioData = () => ({
   },
 })
 
-// Helper to test if a string is a custom uploaded image (data URL or http link)
+// Helper to test if a string is a custom uploaded image (data URL or external link)
 export const isCustomMedia = (val) => {
   if (!val || typeof val !== 'string') return false
   const trimmed = val.trim()
+  if (!trimmed) return false
+
+  // Reject defunct paths, former repo subpaths, or stale build asset hashes
+  if (
+    trimmed.includes('zaheeraniston.github.io') ||
+    trimmed.includes('zaheerabbas') ||
+    trimmed.includes('ZaheerAbbas') ||
+    trimmed.startsWith('./assets/') ||
+    trimmed.startsWith('/assets/') ||
+    (trimmed.includes('/assets/') && (trimmed.endsWith('.webp') || trimmed.endsWith('.png') || trimmed.endsWith('.jpg') || trimmed.endsWith('.svg')))
+  ) {
+    return false
+  }
+
   return (
     trimmed.startsWith('data:image/') ||
     trimmed.startsWith('data:application/') ||
@@ -426,7 +440,7 @@ export const mergeWithDefaults = (parsed) => {
     },
     projects: Array.isArray(parsed.projects) && parsed.projects.length
       ? parsed.projects.map((proj, idx) => ({
-          ...defaults.projects[idx],
+          ...(defaults.projects[idx] || {}),
           ...proj,
           imgs: Array.isArray(proj.imgs)
             ? proj.imgs.map((img, imgIdx) =>
