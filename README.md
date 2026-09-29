@@ -28,10 +28,10 @@ A showcase portfolio featuring interactive 3D physics, mouse parallax, an infini
 ### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/zaheeraniston/zaheerabbas.git
+git clone https://github.com/zaheeraniston/zaheeraniston.github.io.git
 
 # Enter project directory
-cd zaheerabbas
+cd zaheeraniston.github.io
 
 # Install dependencies
 npm install
