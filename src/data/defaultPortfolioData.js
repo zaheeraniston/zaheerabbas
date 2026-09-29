@@ -63,19 +63,20 @@ export const getDefaultPortfolioData = () => ({
   about: {
     title: 'About',
     badges: [
+      'Founder of Neurox Technology',
       'Full Stack Developer',
       'React & PHP Specialist',
-      'Backend Developer',
+      'Backend Architect',
       'UI & UX Designer',
       'Certified in Artificial Intelligence by Infosys',
       '6+ Years Experience',
       'Dhubri, Assam',
     ],
-    bio: 'Full Stack Developer, React & PHP specialist, and Backend Architect with 6+ years of industry experience creating high-impact digital products. Certified in Artificial Intelligence by Infosys. Turning complex logic into seamless, intuitive interfaces from Dhubri, Assam.',
+    bio: 'Founder of Neurox Technology, Full Stack Developer, React & PHP specialist, and Backend Architect with 6+ years of industry experience creating high-impact digital products. Certified in Artificial Intelligence by Infosys. Turning complex logic into seamless, intuitive interfaces from Dhubri, Assam.',
     stats: [
       { id: '1', num: '6+', label: 'Years Experience' },
       { id: '2', num: 'Infosys', label: 'AI Certified' },
-      { id: '3', num: 'Assam', label: 'Dhubri, India' },
+      { id: '3', num: 'Founder', label: 'Neurox Technology' },
     ],
     btnText: 'Explore Skills',
     btnLink: '#skills',

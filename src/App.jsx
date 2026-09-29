@@ -11,6 +11,7 @@ import coffeeImg from './assets/Coffee-opt.webp'
 import keyImg from './assets/Key-opt.webp'
 import planeImg from './assets/Plane-opt.webp'
 import ringImg from './assets/Ring-opt.webp'
+import neuroxLogo from './assets/neurox-logo.png'
 
 // Fallback Marquee Assets
 import mq1_1 from './assets/1.1-opt.webp'
@@ -350,10 +351,19 @@ export default function App() {
         />
 
         <footer className="hero-footer">
-          <p className="hero-p">
-            {portfolioData.hero?.subtitle ||
-              'Designer & developer crafting bold digital experiences that make brands impossible to ignore.'}
-          </p>
+          <div className="hero-footer-info">
+            <div className="hero-founder-pill">
+              <span className="founder-pulse-dot" />
+              <img src={neuroxLogo} alt="Neurox Technology" className="hero-neurox-logo" />
+              <span className="founder-pill-text">
+                Founder of <strong className="founder-brand-highlight">Neurox Technology</strong>
+              </span>
+            </div>
+            <p className="hero-p">
+              {portfolioData.hero?.subtitle ||
+                'Designer & developer crafting bold digital experiences that make brands impossible to ignore.'}
+            </p>
+          </div>
           <a href={portfolioData.hero?.btnLink || '#contact'} className="btn">
             {portfolioData.hero?.btnText || 'Contact Me'}
           </a>
@@ -409,18 +419,23 @@ export default function App() {
         <div className="big-title">{portfolioData.about?.title || 'About'}</div>
 
         <div className="about-highlights">
-          {(portfolioData.about?.badges || []).map((badge, idx) => (
-            <span
-              key={idx}
-              className={`about-badge ${
-                badge.toLowerCase().includes('infosys') || badge.toLowerCase().includes('ai')
-                  ? 'about-badge-ai'
-                  : ''
-              }`}
-            >
-              {badge}
-            </span>
-          ))}
+          {(portfolioData.about?.badges || []).map((badge, idx) => {
+            const isFounder = badge.toLowerCase().includes('founder') || badge.toLowerCase().includes('neurox')
+            const isAi = badge.toLowerCase().includes('infosys') || badge.toLowerCase().includes('ai')
+            return (
+              <span
+                key={idx}
+                className={`about-badge ${
+                  isFounder ? 'about-badge-founder' : isAi ? 'about-badge-ai' : ''
+                }`}
+              >
+                {isFounder && (
+                  <img src={neuroxLogo} alt="Neurox" className="about-badge-logo" />
+                )}
+                {badge}
+              </span>
+            )
+          })}
         </div>
 
         <p className="about-p">{portfolioData.about?.bio}</p>

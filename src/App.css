@@ -260,6 +260,86 @@
   gap: 40px;
 }
 
+/* HERO FOOTER INFO & FOUNDER PILL */
+.hero-footer-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 28vw;
+}
+
+.hero-founder-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px 6px 12px;
+  background: rgba(255, 30, 30, 0.08);
+  border: 1px solid rgba(255, 60, 60, 0.35);
+  border-radius: 999px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 4px 20px rgba(255, 30, 30, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.hero-founder-pill:hover {
+  background: rgba(255, 30, 30, 0.14);
+  border-color: rgba(255, 60, 60, 0.7);
+  box-shadow: 0 6px 26px rgba(255, 30, 30, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.founder-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff3333;
+  box-shadow: 0 0 8px #ff3333;
+  animation: pulseFounder 2s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+@keyframes pulseFounder {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 8px #ff3333;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.65;
+    box-shadow: 0 0 14px #ff3333;
+  }
+}
+
+.hero-neurox-logo {
+  height: 18px;
+  width: auto;
+  object-fit: contain;
+  mix-blend-mode: screen;
+  filter: brightness(1.15) contrast(1.1);
+  display: block;
+}
+
+.founder-pill-text {
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 245, 247, 0.85);
+  white-space: nowrap;
+}
+
+.founder-brand-highlight {
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  background: linear-gradient(90deg, #ff4a4a 0%, #ffffff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .hero-p {
   margin: 0;
   max-width: 24vw;
@@ -431,6 +511,28 @@
 .about-badge-ai:hover {
   border-color: rgba(192, 132, 252, 0.8);
   box-shadow: 0 4px 25px rgba(192, 132, 252, 0.35);
+}
+
+.about-badge-founder {
+  border-color: rgba(255, 60, 60, 0.45);
+  background: rgba(255, 60, 60, 0.08);
+  color: #ffb3b3;
+}
+
+.about-badge-founder:hover {
+  border-color: rgba(255, 60, 60, 0.85);
+  box-shadow: 0 4px 25px rgba(255, 60, 60, 0.35);
+  color: #ffffff;
+}
+
+.about-badge-logo {
+  height: 15px;
+  width: auto;
+  object-fit: contain;
+  mix-blend-mode: screen;
+  filter: brightness(1.2);
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .about-stats {
@@ -1528,6 +1630,23 @@
     padding: 0 20px !important;
     z-index: 20 !important;
     box-sizing: border-box !important;
+  }
+  .hero-footer-info {
+    align-items: center !important;
+    text-align: center !important;
+    max-width: 100% !important;
+    gap: 10px !important;
+  }
+  .hero-founder-pill {
+    padding: 5px 14px !important;
+    max-width: 90vw !important;
+  }
+  .founder-pill-text {
+    font-size: 11px !important;
+    letter-spacing: 0.1em !important;
+  }
+  .hero-neurox-logo {
+    height: 16px !important;
   }
   .hero-p {
     max-width: 320px !important;
