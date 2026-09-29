@@ -300,17 +300,6 @@ export default function App() {
           <a href="#skills" className="nav-link">Skills</a>
           <a href="#work" className="nav-link">Work</a>
           <a href="#contact" className="nav-link">Contact</a>
-          <a
-            href="#admin"
-            className="nav-link"
-            style={{ color: '#4d8dff' }}
-            onClick={(e) => {
-              e.preventDefault()
-              setIsAdminOpen(true)
-            }}
-          >
-            Admin
-          </a>
           <button
             className="burger"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -330,16 +319,6 @@ export default function App() {
             <a href="#skills" onClick={() => setIsMobileMenuOpen(false)}>Skills</a>
             <a href="#work" onClick={() => setIsMobileMenuOpen(false)}>Work</a>
             <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
-            <a
-              href="#admin"
-              style={{ color: '#4d8dff' }}
-              onClick={() => {
-                setIsMobileMenuOpen(false)
-                setIsAdminOpen(true)
-              }}
-            >
-              Admin CMS
-            </a>
           </div>
         )}
 
