@@ -886,31 +886,344 @@
   }
 }
 
+.admin-mobile-save-bar {
+  display: none;
+}
+
 /* ========================================================
-   11. RESPONSIVE DESIGN
+   11. 100% COMPLETE MOBILE RESPONSIVE ENGINE
    ======================================================== */
 @media (max-width: 900px) {
+  .admin-overlay {
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  .admin-navbar {
+    height: 56px;
+    padding: 0 14px;
+    gap: 8px;
+  }
+
+  .admin-brand-title {
+    font-size: 14px;
+  }
+
+  .admin-brand-badge {
+    display: none;
+  }
+
+  .admin-status-pill {
+    padding: 2px 8px;
+    font-size: 10px;
+    gap: 4px;
+  }
+
+  .admin-nav-actions {
+    gap: 6px;
+  }
+
+  .admin-btn-save {
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+
+  .admin-btn-view {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+
+  .admin-btn-logout {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+
   .admin-body {
     flex-direction: column;
+    height: calc(100vh - 56px);
+    height: calc(100dvh - 56px);
   }
+
+  /* Horizontal Smooth App-Style Pill Tabs */
   .admin-sidebar {
     width: 100%;
     height: auto;
     flex-direction: row;
     overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 8px;
+    padding: 8px 12px;
+    gap: 8px;
+    background: #090c13;
+    flex-shrink: 0;
   }
+
+  .admin-sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
   .admin-tab-btn {
     white-space: nowrap;
     width: auto;
+    flex-shrink: 0;
+    padding: 8px 14px;
+    min-height: 38px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 12px;
   }
+
+  .admin-tab-btn.active {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #3b82f6;
+    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.4);
+  }
+
+  .admin-tab-btn.active svg {
+    color: #ffffff;
+  }
+
   .admin-main-panel {
-    padding: 20px 16px;
+    padding: 16px 14px 100px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
+
+  .admin-section-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .admin-section-header .admin-btn-secondary {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+    font-size: 14px;
+  }
+
+  .admin-card {
+    padding: 18px 14px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+
+  .admin-card-header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
   .admin-grid-2,
   .admin-grid-3 {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Prevent iOS zoom & make all inputs 100% touch friendly */
+  .admin-input,
+  .admin-textarea,
+  select.admin-input {
+    font-size: 16px !important;
+    min-height: 44px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .admin-textarea {
+    min-height: 80px;
+  }
+
+  /* Photo Editor Stacks Cleanly on Mobile */
+  .admin-photo-card {
+    padding: 14px;
+  }
+
+  .admin-photo-body {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .admin-photo-preview-wrap {
+    width: 100%;
+    height: 150px;
+    max-width: 100%;
+  }
+
+  .admin-photo-preview {
+    object-fit: contain;
+    background: #05070c;
+  }
+
+  .admin-photo-actions {
+    width: 100%;
+  }
+
+  .admin-btn-file-upload {
+    width: 100%;
+    min-height: 44px;
+    justify-content: center;
+    font-size: 13px;
+  }
+
+  .admin-btn-url-toggle {
+    width: 100%;
+    min-height: 38px;
+    text-align: center;
+  }
+
+  .admin-photo-url-row {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .admin-photo-url-row .admin-btn-small {
+    width: 100%;
+    min-height: 42px;
+    justify-content: center;
+  }
+
+  /* Always-Visible Marquee Gallery Buttons on Touch Screens */
+  .admin-photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .admin-gallery-item {
+    height: 110px;
+    border-radius: 10px;
+  }
+
+  .admin-gallery-overlay {
+    opacity: 1 !important;
+    background: linear-gradient(180deg, transparent 40%, rgba(5, 7, 12, 0.95) 100%) !important;
+    align-items: flex-end !important;
+    padding-bottom: 8px !important;
+  }
+
+  .admin-icon-btn {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 8px;
+  }
+
+  /* Skills Matrix Grid */
+  .admin-skills-edit-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .admin-skill-box {
+    padding: 14px;
+  }
+
+  .admin-range {
+    height: 32px;
+  }
+
+  /* Mobile Sticky Bottom Save Bar */
+  .admin-mobile-save-bar {
+    display: block;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 14px;
+    background: rgba(13, 16, 23, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 60;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.6);
+  }
+
+  .admin-mobile-save-btn {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.45);
+    transition: all 0.2s;
+  }
+
+  .admin-mobile-save-btn:active {
+    transform: scale(0.98);
+    background: #1d4ed8;
+  }
+
+  .admin-mobile-save-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  /* Floating Toast positioned above mobile save bar */
+  .admin-toast {
+    bottom: 74px;
+    left: 14px;
+    right: 14px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Mobile Login Portal */
+  .admin-login-wrap {
+    padding: 16px;
+  }
+
+  .admin-login-card {
+    padding: 30px 18px;
+    border-radius: 16px;
+  }
+
+  .admin-login-form .admin-input,
+  .admin-btn-primary {
+    font-size: 16px !important;
+    min-height: 48px;
+  }
+}
+
+/* Extra Compact Phones (Under 480px) */
+@media (max-width: 480px) {
+  .admin-navbar {
+    padding: 0 10px;
+  }
+
+  .admin-btn-view .admin-btn-text,
+  .admin-btn-logout .admin-btn-text {
+    display: none;
+  }
+
+  .admin-btn-view,
+  .admin-btn-logout {
+    padding: 7px;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+  }
+
+  .admin-btn-save {
+    padding: 7px 12px;
+  }
+
+  .admin-photo-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

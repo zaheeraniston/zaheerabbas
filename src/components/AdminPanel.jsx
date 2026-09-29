@@ -492,17 +492,17 @@ export default function AdminPanel({ data, onUpdate, onClose }) {
         </div>
 
         <div className="admin-nav-actions">
-          <button onClick={handleSave} className="admin-btn-save" disabled={isSavingCloud || isProcessingImg}>
+          <button onClick={handleSave} className="admin-btn-save" disabled={isSavingCloud || isProcessingImg} title="Save &amp; Publish">
             <Icons.Save />
-            <span>{isSavingCloud ? 'Synchronizing Cloud...' : 'Save & Publish'}</span>
+            <span className="admin-btn-text">{isSavingCloud ? 'Saving...' : 'Save & Publish'}</span>
           </button>
-          <button onClick={onClose} className="admin-btn-view">
+          <button onClick={onClose} className="admin-btn-view" title="View Live Site">
             <Icons.ExternalLink />
-            <span>View Live Site</span>
+            <span className="admin-btn-text">View Site</span>
           </button>
-          <button onClick={handleLogout} className="admin-btn-logout">
+          <button onClick={handleLogout} className="admin-btn-logout" title="Logout">
             <Icons.Logout />
-            <span>Logout</span>
+            <span className="admin-btn-text">Logout</span>
           </button>
         </div>
       </header>
@@ -1742,6 +1742,14 @@ export default function AdminPanel({ data, onUpdate, onClose }) {
               </div>
             </div>
           )}
+
+          {/* Mobile Sticky Quick-Save Bar */}
+          <div className="admin-mobile-save-bar">
+            <button onClick={handleSave} className="admin-mobile-save-btn" disabled={isSavingCloud || isProcessingImg}>
+              <Icons.Save />
+              <span>{isSavingCloud ? 'Saving to Cloud...' : 'Save & Publish Changes'}</span>
+            </button>
+          </div>
         </main>
       </div>
 
